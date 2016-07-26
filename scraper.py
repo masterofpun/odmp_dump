@@ -106,6 +106,5 @@ while not isLast:
     data = [sno,name,rank,office,state,end_of_watch,date_of_incident,age,tour,badge_no,vet,cause,weapon,offender,summary,image]
     print(data)
     c.execute('INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',data)             
-    conn.commit()
-    time.sleep(random.randint(1,5))
+conn.commit()
 c.close()
