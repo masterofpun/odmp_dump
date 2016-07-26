@@ -62,7 +62,10 @@ while not isLast:
     rank = info_right[0].strip()
     office = info_right[2].split(',')[0].strip()
     state = info_right[2].split(',')[1].strip()
-    end_of_watch = str(dateutil.parser.parse(info_right[3].split(':')[1].strip()).date())
+    try:
+        end_of_watch = str(dateutil.parser.parse(info_right[3].split(':')[1].strip()).date())
+    except ValueError:
+        end_of_watch = None
     date_of_incident = end_of_watch
     age = None
     tour = None
@@ -90,7 +93,10 @@ while not isLast:
         if 'weapon:' in bl:
             weapon = bd
         if 'incident date:' in bl:
-            date_of_incident = str(dateutil.parser.parse(bd).date())
+            try:
+                date_of_incident = str(dateutil.parser.parse(bd).date())
+            except ValueError:
+                date_of_incident = end_of_watch
         if 'military veteran' in bl:
             vet = True
         if 'offender' in bl:
