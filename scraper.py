@@ -13,7 +13,6 @@ c = conn.cursor()
 
 headers = {'User-Agent':'Python script gathering data, will poll once a day after an initial dump; contact at: reddit.com/u/hypd09', 'Accept-Encoding': 'gzip', 'Content-Encoding': 'gzip'}
 
-c.execute('DROP TABLE IF EXISTS data')
 c.execute("CREATE TABLE IF NOT EXISTS data (sno,name,rank,office,state,end_of_watch,date_of_incident,age,tour,badge_no,military_veteran,cause,weapon,offender,summary,image)")
 
 session = requests.Session()
@@ -105,6 +104,7 @@ while not isLast:
     
     data = [sno,name,rank,office,state,end_of_watch,date_of_incident,age,tour,badge_no,vet,cause,weapon,offender,summary,image]
     print(data)
-    c.execute('INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',data)             
+    c.execute('INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',data)
+    time.sleep(0.1)
 conn.commit()
 c.close()
