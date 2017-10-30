@@ -1,6 +1,5 @@
 import requests, re, dateutil.parser, sqlite3, time, random
 from bs4 import BeautifulSoup as Soup
-
 DB_FILE = 'data.sqlite'
 
 space = re.compile(r'\n+')
@@ -11,7 +10,7 @@ const = re.compile(r'[^a-z0-9\-]')
 conn = sqlite3.connect(DB_FILE)
 c = conn.cursor()
 
-headers = {'User-Agent':'Python script gathering data, will poll once a day after an initial dump; contact at: reddit.com/u/hypd09', 'Accept-Encoding': 'gzip', 'Content-Encoding': 'gzip'}
+headers = {'User-Agent':'A script to get some data once a day. If causing issues, contact at: hypd09@gmail.com', 'Accept-Encoding': 'gzip', 'Content-Encoding': 'gzip'}
 
 c.execute("CREATE TABLE IF NOT EXISTS data (sno,name,rank,office,state,end_of_watch,date_of_incident,age,tour,badge_no,military_veteran,cause,weapon,offender,summary,image)")
 
